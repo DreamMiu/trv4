@@ -1,4 +1,4 @@
-name: Invero Build
+name: InveroBuild
 on:
   push:
     branches:
