@@ -1,8 +1,5 @@
-name: Invero Build
+name: Invero-Build
 on:
-  schedule:
-    - cron: "0 15 10 ? * MON-FRI"
-  workflow_dispatch:
   push:
     branches:
       - master
@@ -10,6 +7,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/setup-java@v1
+        with:
+          java-version: 8
       - name: checkout repository
         uses: actions/checkout@v2
       - name: cache gradle packages
@@ -21,11 +21,6 @@ jobs:
             ~/.gradle/wrapper
       - name: validate gradle wrapper
         uses: gradle/wrapper-validation-action@v1
-      - name: setup jdk 8.0
-        uses: actions/setup-java@v2
-        with:
-          distribution: adopt
-          java-version: 17
       - name: make gradle wrapper executable
         run: chmod +x ./gradlew
       - name: build
