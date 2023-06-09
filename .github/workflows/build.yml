@@ -1,4 +1,4 @@
-name: Invero-Build
+name: Build
 on:
   push:
     branches:
@@ -41,5 +41,5 @@ jobs:
       - name: Upload Artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: Invero Artifact
-          path: plugin/platform-bukkit/build/libs/*.jar
+          name: Artifact
+          path: build/libs/*.jar
